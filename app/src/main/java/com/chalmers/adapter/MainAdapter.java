@@ -1,8 +1,10 @@
-package com.chalmers;
+package com.chalmers.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import java.util.ArrayList;
 
 /**
  * Created by Chalmers on 2016-05-08 21:58.
@@ -10,18 +12,20 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class MainAdapter extends FragmentPagerAdapter {
 
+    private ArrayList<Fragment> fragments = null;
 
-    public MainAdapter(FragmentManager fm) {
+    public MainAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);
+        this.fragments = fragments;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return fragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return fragments.size();
     }
 }

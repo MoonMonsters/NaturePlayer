@@ -1,9 +1,17 @@
 package com.chalmers.activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.chalmers.adapter.MainAdapter;
+import com.chalmers.fragment.AudioListFragment;
+import com.chalmers.fragment.VideoListFragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
@@ -20,6 +28,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        Log.d("TAG","MainActivity-->initView");
         tv_audio = findView(R.id.id_tv_audio);
         tv_video = findView(R.id.id_tv_video);
         view_line = findView(R.id.id_view_line);
@@ -30,6 +39,17 @@ public class MainActivity extends BaseActivity {
     public void initData() {
         //默认选中tv_video
         setTitleChange(true);
+
+        initViewPager();
+    }
+
+    private void initViewPager(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new AudioListFragment());
+        fragments.add(new VideoListFragment());
+        MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(),fragments);
+
+        vp_listing.setAdapter(mainAdapter);
     }
 
     @Override

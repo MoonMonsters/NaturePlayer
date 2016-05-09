@@ -2,6 +2,7 @@ package com.chalmers.activity;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,7 +17,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
+        Log.d("TAG","SplashActivity-->initView");
     }
 
     @Override

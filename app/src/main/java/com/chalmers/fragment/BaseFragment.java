@@ -33,7 +33,7 @@ public abstract class BaseFragment extends Fragment implements UiOperations,View
         initData();
         initListener();
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return rootView;
     }
 
     /**

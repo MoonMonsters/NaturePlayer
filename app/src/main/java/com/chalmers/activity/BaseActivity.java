@@ -1,7 +1,8 @@
 package com.chalmers.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
@@ -12,7 +13,7 @@ import com.chalmers.utils.Utils;
 /**
  * 基类
  */
-public abstract class BaseActivity extends AppCompatActivity
+public abstract class BaseActivity extends FragmentActivity
         implements View.OnClickListener,UiOperations{
 
     @Override
@@ -22,6 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
         View rootView = findViewById(android.R.id.content);
         Utils.findButtonSetOnClickListener(rootView,this);
+
+        Log.d("TAG","BaseActivity-->"+this);
 
         initView();
         initData();
