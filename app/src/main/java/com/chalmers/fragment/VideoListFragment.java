@@ -39,6 +39,11 @@ public class VideoListFragment extends BaseFragment{
         });
     }
 
+    /**
+     * 进入播放界面
+     * @param videoItems 集合
+     * @param position 点击位置
+     */
     private void enterVideoPalyerActivity(ArrayList<VideoItem> videoItems, int position) {
         Intent intent = new Intent(getActivity(), VideoPlayerActivity.class);
         intent.putExtra(Keys.VIDEO_LIST,videoItems);
@@ -64,6 +69,7 @@ public class VideoListFragment extends BaseFragment{
 
     @Override
     public void initView() {
+
         lv_video = (ListView) rootView.findViewById(R.id.lv_media);
 //        lv_video = findView(R.id.lv_video);
     }

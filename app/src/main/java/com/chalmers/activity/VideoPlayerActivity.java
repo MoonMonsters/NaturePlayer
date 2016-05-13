@@ -17,12 +17,7 @@ public class VideoPlayerActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                videoView.start();
-            }
-        });
+        videoView.setOnPreparedListener(onPreparedListener);
     }
 
     @Override
@@ -35,8 +30,10 @@ public class VideoPlayerActivity extends BaseActivity {
         videoItems = (ArrayList<VideoItem>) getIntent().getSerializableExtra(Keys.VIDEO_LIST);
         curPosition = getIntent().getIntExtra(Keys.CURPOSITION,-1);
 
+        //获得点击位置的视频信息
         VideoItem videoItem = videoItems.get(curPosition);
 
+        //准备视频资源
         videoView.setVideoPath(videoItem.getPath());
     }
 
@@ -49,4 +46,12 @@ public class VideoPlayerActivity extends BaseActivity {
     public void onClick(View view, int id) {
 
     }
+
+    MediaPlayer.OnPreparedListener onPreparedListener = new MediaPlayer.OnPreparedListener() {
+        @Override
+        public void onPrepared(MediaPlayer mp) {
+            //当准备完成后，再播放视频
+            videoView.start();
+        }
+    };
 }
