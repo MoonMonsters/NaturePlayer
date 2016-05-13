@@ -6,4 +6,5 @@
     <color name="green">#5CB292</color>
     <color name="trans_green">#885CB292</color>
     <color name="trans_white">#88FFFFFF</color>
+    <color name="trans_white2">#22FFFFFF</color>
 </resources>

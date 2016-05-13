@@ -42,9 +42,9 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/id_view_line"
+            android:id="@+id/id_view_indicator"
             android:background="@color/green"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="5dp"
             />
 

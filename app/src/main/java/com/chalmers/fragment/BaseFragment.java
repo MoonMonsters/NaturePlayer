@@ -43,7 +43,8 @@ public abstract class BaseFragment extends Fragment implements UiOperations,View
      * @return 控件
      */
     public <T> T findView(int id){
-        T view = (T)getActivity().findViewById(id);
+        //这个地方需要注意
+        T view = (T)rootView.findViewById(id);
 
         return view;
     }

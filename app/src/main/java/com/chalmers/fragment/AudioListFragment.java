@@ -26,7 +26,7 @@ public class AudioListFragment extends BaseFragment{
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_audio_list;
+        return R.layout.fragment_media_list;
     }
 
     @Override
