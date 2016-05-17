@@ -27,7 +27,7 @@ public class VideoItemAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
 
         //需要显示的布局
-        View view = LayoutInflater.from(context).inflate(R.layout.item_media,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_video,null);
         //创建ViewHolder对象
         ViewHolder viewHolder = new ViewHolder(view);
         //加入标志中

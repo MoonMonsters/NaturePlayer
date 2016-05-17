@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.format.DateFormat;
@@ -24,6 +25,7 @@ import com.chalmers.bean.VideoItem;
 import com.chalmers.interfaces.Keys;
 import com.chalmers.utils.Logger;
 import com.chalmers.utils.Utils;
+import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
@@ -65,6 +67,14 @@ public class VideoPlayerActivity extends BaseActivity {
     int streamMaxVolume = 0;
     AudioManager audioManager = null;
 
+    //显示对话框面板
+    private LinearLayout linear_loading = null;
+
+    @Override
+    public void supportFinishAfterTransition() {
+        super.supportFinishAfterTransition();
+    }
+
     //手势
     private GestureDetector gestureDetector = null;
     //最大音量值和屏幕高度的比例
@@ -104,6 +114,8 @@ public class VideoPlayerActivity extends BaseActivity {
         videoView.setOnCompletionListener(onCompletionListener);
         sb_voice.setOnSeekBarChangeListener(onSeekBarChangeListener);
         sb_progress.setOnSeekBarChangeListener(onSeekBarChangeListener);
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer.setOnBufferingUpdateListener(onBufferingUpdateListener);
     }
 
     @Override
@@ -142,6 +154,8 @@ public class VideoPlayerActivity extends BaseActivity {
         linear_top = findView(R.id.linear_top);
         linear_bottom = findView(R.id.linear_bottom);
 
+        linear_loading = findView(R.id.linear_loading);
+
         hideLayoutPanel();
     }
 
@@ -167,17 +181,31 @@ public class VideoPlayerActivity extends BaseActivity {
     }
 
     private void playVideo() {
-        //获得点击位置的视频信息
-        VideoItem videoItem = videoItems.get(curPosition);
-        //准备视频资源
-        videoView.setVideoPath(videoItem.getPath());
-        //显示视频名称
-        tv_title.setText(videoItem.getTitle());
 
-        //如果是第一个视频，则不可点击
-        btn_pre.setEnabled(curPosition != 0);
-        //如果是最后一个视频，则不可点击
-        btn_next.setEnabled(curPosition != videoItems.size() - 1);
+        showLoadingDialog();
+
+        //接收uri
+        Uri data = getIntent().getData();
+        //如果是从外部打开的视频
+        if(data != null){
+            videoView.setVideoURI(data);
+            tv_title.setText(data.getPath());
+
+            btn_next.setEnabled(false);
+            btn_pre.setEnabled(false);
+        }else{
+            //获得点击位置的视频信息
+            VideoItem videoItem = videoItems.get(curPosition);
+            //准备视频资源
+            videoView.setVideoPath(videoItem.getPath());
+            //显示视频名称
+            tv_title.setText(videoItem.getTitle());
+
+            //如果是第一个视频，则不可点击
+            btn_pre.setEnabled(curPosition != 0);
+            //如果是最后一个视频，则不可点击
+            btn_next.setEnabled(curPosition != videoItems.size() - 1);
+        }
 
         isFullScreen = false;
         fullScreen();
@@ -441,6 +469,22 @@ public class VideoPlayerActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 隐藏对话框
+     */
+    private void hideLodingDialog(){
+        ViewPropertyAnimator.animate(linear_loading).alpha(0.0f)
+                .setDuration(1500)
+                .setListener(animatorListener);
+    }
+
+    /**
+     * 显示对话框
+     */
+    private void showLoadingDialog(){
+        linear_loading.setVisibility(View.VISIBLE);
+    }
+
     @Override
     public void onClick(View view, int id) {
         removeHideMessage();
@@ -516,6 +560,8 @@ public class VideoPlayerActivity extends BaseActivity {
             updateCurPlayingTime();
             //当开始播放时就改变背景图片
             controlBtnBg();
+
+            hideLodingDialog();
         }
     };
 
@@ -619,6 +665,40 @@ public class VideoPlayerActivity extends BaseActivity {
             videoView.seekTo(0);
             tv_curTime.setText(Utils.formatTime(0));
             sb_progress.setProgress(0);
+        }
+    };
+
+    Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() {
+        @Override
+        public void onAnimationStart(Animator animator) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animator) {
+            Logger.d(VideoPlayerActivity.this,"onAnimationEnd");
+            //动画结束时，将对话框面板隐藏
+            linear_loading.setVisibility(View.GONE);
+            //重新设置成全部显示模式
+            ViewHelper.setAlpha(linear_loading,1.0f);
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animator) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animator animator) {
+
+        }
+    };
+
+    MediaPlayer.OnBufferingUpdateListener onBufferingUpdateListener = new MediaPlayer.OnBufferingUpdateListener() {
+        @Override
+        public void onBufferingUpdate(MediaPlayer mp, int percent) {
+            int secondaryProgress = (int)((percent*1.0/100) * mp.getDuration());
+            sb_progress.setSecondaryProgress(secondaryProgress);
         }
     };
 }

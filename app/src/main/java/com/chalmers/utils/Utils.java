@@ -86,8 +86,8 @@ public class Utils {
             Logger.d(Utils.class,"----------------------");
             Logger.d(Utils.class,cursor.getString(0));
             Logger.d(Utils.class,cursor.getString(2));
-            Logger.d(Utils.class,cursor.getLong(3) + "");
-            Logger.d(Utils.class,cursor.getLong(4) + "");
+//            Logger.d(Utils.class,cursor.getLong(3) + "");
+//            Logger.d(Utils.class,cursor.getLong(4) + "");
         }
     }
 
