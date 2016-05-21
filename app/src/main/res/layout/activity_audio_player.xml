@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chalmers.activity.AudioPlayerActivity"
+    android:background="@drawable/base_bg"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/audio_title_bar"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/iv_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/audio_anim_01"
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="艺术家"
+            android:id="@+id/tv_act_audio_artist"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="歌词"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_audio_time"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00/00:00"
+        android:textSize="15sp"
+        android:layout_gravity="right"
+        />
+
+    <SeekBar
+        android:id="@+id/sb_audio_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <View style="@style/placehold" />
+
+        <Button
+            android:id="@+id/btn_audio_random"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_audio_random"
+            />
+
+        <View style="@style/placehold" />
+
+        <Button
+            android:id="@+id/btn_audio_pre"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/selector_btn_audio_pre"
+            />
+
+        <View style="@style/placehold" />
+
+        <Button
+            android:id="@+id/btn_audio_play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/selector_btn_audio_play"
+            />
+
+        <View style="@style/placehold" />
+
+        <Button
+            android:id="@+id/btn_audio_next"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/selector_btn_audio_next"
+            />
+
+        <View style="@style/placehold" />
+
+        <Button
+            android:id="@+id/btn_audio_list"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_audio_list"
+            />
+
+        <View style="@style/placehold" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -369,9 +369,9 @@ public class VideoPlayerActivity extends BaseActivity {
     private void controlBtnBg(){
         int resId;
         if(videoView.isPlaying()){
-            resId = R.drawable.selector_btn_pause;
+            resId = R.drawable.selector_btn_video_pause;
         }else{
-            resId = R.drawable.selector_btn_play;
+            resId = R.drawable.selector_btn_video_play;
         }
 
         btn_play.setBackgroundResource(resId);

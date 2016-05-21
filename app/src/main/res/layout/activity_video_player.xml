@@ -131,7 +131,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_btn_exit"
+                    android:background="@drawable/selector_btn_video_exit"
                     />
 
                 <Button
@@ -139,7 +139,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_btn_pre"
+                    android:background="@drawable/selector_btn_video_pre"
                     />
 
                 <Button
@@ -147,7 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_btn_play"
+                    android:background="@drawable/selector_btn_video_play"
                     />
 
                 <Button
@@ -155,7 +155,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_btn_next"
+                    android:background="@drawable/selector_btn_video_next"
                     />
 
                 <Button
@@ -163,7 +163,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_btn_full"
+                    android:background="@drawable/selector_btn_video_full"
                     />
             </LinearLayout>
         </LinearLayout>

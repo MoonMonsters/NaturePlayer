@@ -3,11 +3,13 @@ package com.chalmers.bean;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
+import java.io.Serializable;
+
 /**
  * Created by Chalmers on 2016-05-16 22:34.
  * email:qxinhai@yeah.net
  */
-public class AudioItem {
+public class AudioItem implements Serializable{
     private String title;
     private String artist;
     private String path;

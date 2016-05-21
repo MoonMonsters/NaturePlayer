@@ -7,4 +7,6 @@ package com.chalmers.interfaces;
 public interface Keys {
     String VIDEO_LIST = "video_list";
     String CURPOSITION = "current_position";
+    String AUDIO_LIST = "audio_list";
+    String INTENT = "intent";
 }

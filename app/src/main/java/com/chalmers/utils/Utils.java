@@ -58,9 +58,9 @@ public class Utils {
      */
     public static int getScreenHeight(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        int screenHeight = windowManager.getDefaultDisplay().getWidth();
+        int height = windowManager.getDefaultDisplay().getWidth();
 
-        return screenHeight;
+        return height;
     }
 
     /**

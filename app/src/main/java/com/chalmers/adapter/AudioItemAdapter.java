@@ -45,8 +45,8 @@ public class AudioItemAdapter extends CursorAdapter {
         private TextView tv_artist;
 
         public ViewHolder(View view){
-            tv_artist = (TextView)view.findViewById(R.id.tv_artist);
-            tv_title = (TextView) view.findViewById(R.id.tv_title);
+            tv_artist = (TextView)view.findViewById(R.id.tv_audio_artist);
+            tv_title = (TextView) view.findViewById(R.id.tv_audio_title);
         }
     }
 }

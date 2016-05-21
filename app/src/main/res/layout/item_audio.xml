@@ -24,7 +24,7 @@
             >
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_audio_title"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:text="主题"
@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_artist"
+            android:id="@+id/tv_audio_artist"
             android:layout_width="match_parent"
             android:text="宝宝"
             android:textSize="16sp"
